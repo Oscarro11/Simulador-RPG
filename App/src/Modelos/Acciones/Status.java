@@ -3,38 +3,44 @@ package Modelos.Acciones;
 import Modelos.Entidades.Combatiente;
 import java.util.ArrayList;
 
-public class Status{
+public class Status extends Accion{
     private int tipo_status;
     private int duracion;
     private int tipo_activacion;
 
     public Status(int tipo_status, int duracion, int tipo_activacion){
+        super();
+
         this.tipo_status = tipo_status;
         this.duracion = duracion;
         this.tipo_activacion = tipo_activacion;
-    }
 
-    public Accion generarAccion(Combatiente portador){
         String nombre = "";
         int velocidad = 0;
-        ArrayList<Integer> intencion = new ArrayList<Integer>();
+        int intencion = 0;
 
         switch (tipo_status) {
             case 1:
                 nombre = "Dano por veneno";
                 velocidad = 1;
-                intencion.add(2);
+                intencion = 2;
                 break;
         
             default:
                 break;
         }
 
-        ArrayList<Combatiente> recipiente = new ArrayList<Combatiente>();
-        recipiente.add(portador);
-
-        return new Accion(nombre, velocidad, intencion, 6, portador, recipiente);
+        super.setNombre(nombre);
+        super.setVelocidad(velocidad);
+        super.setIntencion(intencion);
     }
+
+    public Accion generarAccionFinDeRonda(Combatiente portador){
+        ArrayList<Combatiente> temp = new ArrayList<Combatiente>();
+        temp.add(portador);
+        return super.generarAccionConObjetivo(portador, temp, 6);
+    }
+        
 
     public int getTipo_status() {
         return tipo_status;

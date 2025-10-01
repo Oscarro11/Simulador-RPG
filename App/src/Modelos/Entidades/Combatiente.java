@@ -42,7 +42,8 @@ public abstract class Combatiente {
                     break;
 
                 case 6:
-                    evasion += cantidad;
+                    evasion = Math.min(80, evasion + cantidad);
+
                     break;
 
                 default:

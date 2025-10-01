@@ -13,7 +13,7 @@ public abstract class Aliado extends Combatiente{
     protected int max_mana;
     protected int mana; 
 
-    public Aliado(String nombre, int max_vida, int ataque, int defensa, int evasion, int max_mana){
+    protected Aliado(String nombre, int max_vida, int ataque, int defensa, int evasion, int max_mana){
         super(nombre, max_vida, ataque, defensa, evasion);
         this.max_mana = max_mana;
         this.mana = max_mana;
